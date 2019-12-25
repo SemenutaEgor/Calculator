@@ -1,0 +1,8 @@
+﻿  CppCLR_WinformsProjekt.cpp
+d:\входящие\учение\аисд\calculator\calculator\calculator\tcalculator.h(75): warning C4018: '<': signed/unsigned mismatch
+  d:\входящие\учение\аисд\calculator\calculator\calculator\tcalculator.h(71): note: while compiling class template member function 'double TCalculator<double>::calc(void)'
+  d:\входящие\учение\аисд\calculator\calculator\calculator\form1.h(404): note: see reference to function template instantiation 'double TCalculator<double>::calc(void)' being compiled
+  d:\входящие\учение\аисд\calculator\calculator\calculator\form1.h(402): note: see reference to class template instantiation 'TCalculator<double>' being compiled
+  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
+  AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  Calculator.vcxproj -> D:\Входящие\УЧЕНИЕ\АИСД\Calculator\Calculator\Debug\Calculator.exe
