@@ -363,7 +363,7 @@ namespace CppCLR_WinformsProjekt {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->BackColor = System::Drawing::SystemColors::Control;
 			this->ClientSize = System::Drawing::Size(609, 565);
 			this->Controls->Add(this->rbrac);
 			this->Controls->Add(this->lbrac);
