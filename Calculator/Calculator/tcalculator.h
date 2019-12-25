@@ -103,5 +103,19 @@ public:
 			res = st_d.Pop();
 		return res;
 	}
+	bool Check() {
+		st_c.Clear();
+		for (int i = 0; i < expr.size(); i++) {
+			if (expr[i] == '(')
+				st_c.Push(expr[i]);
+			if (expr[i] == ')') {
+				if (st_c.IsEmpty())
+					return false;
+				else
+					st_c.Pop();
+			}
+		}
+		return st_c.IsEmpty();
+	}
 };
 #endif // !_TCALCULATOR_H_

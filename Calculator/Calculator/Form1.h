@@ -123,11 +123,12 @@ namespace CppCLR_WinformsProjekt {
 			// Result
 			// 
 			this->Result->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->Result->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->Result->Location = System::Drawing::Point(4, 66);
 			this->Result->Name = L"Result";
 			this->Result->Size = System::Drawing::Size(503, 58);
 			this->Result->TabIndex = 1;
-			this->Result->Text = L"label1";
+			this->Result->Text = L"0";
 			this->Result->Click += gcnew System::EventHandler(this, &Form1::Result_Click);
 			// 
 			// Delete
@@ -397,12 +398,26 @@ namespace CppCLR_WinformsProjekt {
 	private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
 	}
 	private: System::Void Enter_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-		std::string Infix;
-		Infix = msclr::interop::marshal_as<std::string>(Enter->Text);
-		TCalculator<double> task;
-		task.SetExpr(Infix);
-			double res = task.calc();
-			Result->Text = Convert::ToString(res);
+		try
+		{
+			std::string Infix;
+			Infix = msclr::interop::marshal_as<std::string>(Enter->Text);
+			TCalculator<double> calcul;
+			calcul.SetExpr(Infix);
+			calcul.ToPostfix();
+			if (calcul.Check())
+			{
+
+				double rez = calcul.calc();
+				Result->Text = Convert::ToString(rez);
+			}
+		}
+		catch (...)
+		{
+			std::string tmp;
+			tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+			Result->Text = gcnew System::String(tmp.c_str());
+		}
 	}
 	private: System::Void Result_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
@@ -416,107 +431,113 @@ namespace CppCLR_WinformsProjekt {
 		tmp += "*";
 		Enter->Text = gcnew System::String(tmp.c_str());
 	}
-private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += "2";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-private: System::Void button8_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += "8";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += "1";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += "3";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += "4";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += "5";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += "6";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += "7";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-private: System::Void button9_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += "9";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-private: System::Void button0_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += "0";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-private: System::Void plus_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += "+";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-private: System::Void minus_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += "-";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-private: System::Void div_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += "/";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-private: System::Void pow_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += "^";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-private: System::Void lbrac_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += "(";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-private: System::Void rbrac_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += ")";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-private: System::Void eq_Click(System::Object^  sender, System::EventArgs^  e) {
-	std::string tmp;
-	tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
-	tmp += "=";
-	Enter->Text = gcnew System::String(tmp.c_str());
-}
-};
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+		tmp += "2";
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	private: System::Void button8_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+		tmp += "8";
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+		tmp += "1";
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+		tmp += "3";
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+		tmp += "4";
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+		tmp += "5";
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+		tmp += "6";
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+		tmp += "7";
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	private: System::Void button9_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+		tmp += "9";
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	private: System::Void button0_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+		tmp += "0";
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	private: System::Void plus_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+		tmp += "+";
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	private: System::Void minus_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+		tmp += "-";
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	private: System::Void div_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+		tmp += "/";
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	private: System::Void pow_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+		tmp += "^";
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	private: System::Void lbrac_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+		tmp += "(";
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	private: System::Void rbrac_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Enter->Text);
+		tmp += ")";
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	private: System::Void eq_Click(System::Object^  sender, System::EventArgs^  e) {
+		std::string tmp;
+		tmp = msclr::interop::marshal_as<std::string>(Result->Text);
+		for (int i = 0; i < tmp.size(); i++)
+		{
+			if (tmp[i] == ',')
+			{
+				tmp[i] = '.';
+			}
+		}
+		Enter->Text = gcnew System::String(tmp.c_str());
+	}
+	};
 }
