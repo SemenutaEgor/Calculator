@@ -123,7 +123,7 @@ namespace CppCLR_WinformsProjekt {
 			// Result
 			// 
 			this->Result->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Result->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->Result->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->Result->Location = System::Drawing::Point(4, 66);
 			this->Result->Name = L"Result";
 			this->Result->Size = System::Drawing::Size(503, 58);
@@ -405,12 +405,9 @@ namespace CppCLR_WinformsProjekt {
 			TCalculator<double> calcul;
 			calcul.SetExpr(Infix);
 			calcul.ToPostfix();
-			if (calcul.Check())
-			{
 
 				double rez = calcul.calc();
 				Result->Text = Convert::ToString(rez);
-			}
 		}
 		catch (...)
 		{
