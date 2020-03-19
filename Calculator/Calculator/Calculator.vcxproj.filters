@@ -30,6 +30,15 @@
     <ClInclude Include="..\..\..\Stack\Stack\Stack\tcalculator.h">
       <Filter>Quelldateien</Filter>
     </ClInclude>
+    <ClInclude Include="tcalculator.h">
+      <Filter>Quelldateien</Filter>
+    </ClInclude>
+    <ClInclude Include="tliststack.h">
+      <Filter>Quelldateien</Filter>
+    </ClInclude>
+    <ClInclude Include="tstack.h">
+      <Filter>Quelldateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">
@@ -54,5 +63,10 @@
     <Image Include="app.ico">
       <Filter>Ressourcendateien</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <Filter>Ressourcendateien</Filter>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

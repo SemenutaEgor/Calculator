@@ -1,19 +1,25 @@
+//tliststack.h
+#ifndef _tliststack_h
+#define _tliststack_h
 #include <iostream>
 template <class T>
 struct TNode {
-	T val; //значение
-	TNode<T> *pNext; //указатель на следующий элемене
+	T val;
+	TNode<T> *pNext;
 };
-//
+
+
 template <class T>
 class TStack {
 	TNode<T> *pFirst;
 public:
-	//конструктор
+
+	//constructor
 	TStack() {
 		pFirst = NULL;
 	}
-	//деструктор
+
+	//destructor
 	~TStack() {
 		TNode<T> *tmp = pFirst;
 		if (tmp == NULL)
@@ -24,27 +30,29 @@ public:
 			tmp = pFirst;
 		}
 	}
-	//Конструктор копирования
+
+	//copy constructor
 	TStack(const TStack<T>& st) {
 		TNode<T> *tmp = st.pFirst;
 		if (tmp == NULL)
 			pFirst = tmp;
-		while (tmp != NULL){
+		while (tmp != NULL) {
 			Push(tmp->val);
 			tmp = tmp->pNext;
 		}
 		delete tmp;
 	}
-	//оператор присваивания
+
+	//assignment operator
 	TStack<T> operator=(const TStack<T>& st) {
-		if (this != &st){
+		if (this != &st) {
 			if (!IsEmpty())
 				Clear();
-			else{
+			else {
 				TNode<T> *tmp = st.pFirst;
 				if (tmp == NULL)
 					pFirst = tmp;
-				while (tmp != NULL){
+				while (tmp != NULL) {
 					Push(tmp->val);
 					tmp = tmp->pNext;
 				}
@@ -53,26 +61,29 @@ public:
 		}
 		return *this;
 	}
-	//проверка на пустоту
+
+	//check for emptiness
 	bool IsEmpty() const {
 		return pFirst == NULL;
 	}
-	//проверка на полноту
+
+	//full check
 	bool IsFull() const {
 		TNode<T> *tmp;
 		tmp = new TNode<T>;
 		if (tmp == NULL)
 			return 1;
-		else{
+		else {
 			delete tmp;
 			return 0;
 		}
 	}
-	//добавить в стек
-	void Push(const T& a){
+
+	//insert into stack
+	void Push(const T& a) {
 		if (IsFull())
 			throw - 1;
-		else{
+		else {
 			TNode<T> *tmp;
 			tmp = new TNode<T>;
 			tmp->pNext = pFirst;
@@ -80,11 +91,12 @@ public:
 			pFirst = tmp;
 		}
 	}
-	//извлечь из стека
+
+	//extract from stack 
 	T Pop() {
 		if (IsEmpty())
 			throw - 1;
-		else{
+		else {
 			T res = pFirst->val;
 			TNode<T> *tmp;
 			tmp = pFirst;
@@ -93,21 +105,24 @@ public:
 			return res;
 		}
 	}
-	//Посмотреть, что на вершине стека
+
+	//see what's on top of the stack
 	T Top() {
 		if (IsEmpty())
 			throw - 1;
 		else
 			return pFirst->val;
 	}
-	//очистить стек
+
+	//clean stack
 	void Clear() {
 		TNode<T> *tmp = pFirst;
-		while (pFirst != NULL){
+		while (pFirst != NULL) {
 			pFirst = pFirst->pNext;
 			delete tmp;
 			tmp = pFirst;
 		}
 	}
 };
+#endif
 

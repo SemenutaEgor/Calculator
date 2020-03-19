@@ -1,3 +1,4 @@
+//tstack.h
 #ifndef _TSTACK_
 #define _TSTACK_
 template <class T>
@@ -6,50 +7,67 @@ class TStack {
 	int size;
 	int num;
 public:
-	TStack(int _size = 10) {         //конструктор
+
+	//constructor
+	TStack(int _size = 10) {
 		if (_size <= 0) throw _size;
 		size = _size;
 		arr = new T[size];
 		num = -1;
 	}
-	~TStack() {                      //деструктор  
+
+	//destructor
+	~TStack() {
 		delete[] arr;
 	}
-	TStack(const TStack &St) {       //конструктор копирования
+
+	//copy constructor
+	TStack(const TStack &St) {
 		size = St.size;
 		arr = new T[size];
 		num = St.num;
 		for (int i = 0; i <= num; i++)
 			arr[i] = St.arr[i];
 	}
-	void Push(const T& el) {                //Положить в стек
+
+	//insert into stack
+	void Push(const T& el) {
 		if (IsFull()) throw num;
 		else {
 			arr[++num] = el;
 		}
 	}
-	T Pop() {                        //Взять из стека
+
+	//extract from stack
+	T Pop() {
 		if (IsEmpty()) throw num;
 		else {
 			return arr[num--];
 		}
 	}
-	T Top() {                        //Посмотреть что на вершине стека
+
+	//see what's on the top of stack
+	T Top() {
 		if (num == -1) throw num;
 		return arr[num];
 	}
-	bool IsEmpty() const {           //Проверить на пустоту
-		if (num == -1)
-			return true;
+
+	//check for emptiness
+	bool IsEmpty() const {
+		return true;
 		return false;
 	}
-	bool IsFull() const {            //Проверить на полность
+
+	//full check
+	bool IsFull() const {
 		if (num == size - 1)
 			return true;
 		return false;
 	}
-	void Clear() {                   //Очистить стек
+
+	// clean stack
+	void Clear() {
 		num = -1;
 	}
 };
-#endif // !_TSTACK_
+#endif 

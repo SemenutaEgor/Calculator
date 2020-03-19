@@ -1,12 +1,17 @@
-﻿  CppCLR_WinformsProjekt.cpp
-d:\входящие\учение\аисд\лабы 3 семестр\calculator\calculator\calculator\form1.h(530): warning C4018: '<': signed/unsigned mismatch
-d:\входящие\учение\аисд\лабы 3 семестр\calculator\calculator\calculator\tcalculator.h(75): warning C4018: '<': signed/unsigned mismatch
-  d:\входящие\учение\аисд\лабы 3 семестр\calculator\calculator\calculator\tcalculator.h(71): note: while compiling class template member function 'double TCalculator<double>::calc(void)'
-  d:\входящие\учение\аисд\лабы 3 семестр\calculator\calculator\calculator\form1.h(409): note: see reference to function template instantiation 'double TCalculator<double>::calc(void)' being compiled
-  d:\входящие\учение\аисд\лабы 3 семестр\calculator\calculator\calculator\form1.h(405): note: see reference to class template instantiation 'TCalculator<double>' being compiled
-d:\входящие\учение\аисд\лабы 3 семестр\calculator\calculator\calculator\tcalculator.h(41): warning C4018: '<': signed/unsigned mismatch
-  d:\входящие\учение\аисд\лабы 3 семестр\calculator\calculator\calculator\tcalculator.h(35): note: while compiling class template member function 'void TCalculator<double>::ToPostfix(void)'
-  d:\входящие\учение\аисд\лабы 3 семестр\calculator\calculator\calculator\form1.h(407): note: see reference to function template instantiation 'void TCalculator<double>::ToPostfix(void)' being compiled
-d:\входящие\учение\аисд\лабы 3 семестр\calculator\calculator\calculator\tcalculator.h(34): warning C4715: 'TCalculator<double>::prior': not all control paths return a value
+﻿  stdafx.cpp
+  AssemblyInfo.cpp
+  CppCLR_WinformsProjekt.cpp
+d:\входящие\учение\аисд\stack-calculator\calculator\calculator\form1.h(530): warning C4018: '<': signed/unsigned mismatch
+d:\входящие\учение\аисд\stack-calculator\calculator\calculator\tcalculator.h(75): warning C4018: '<': signed/unsigned mismatch
+  d:\входящие\учение\аисд\stack-calculator\calculator\calculator\tcalculator.h(71): note: while compiling class template member function 'double TCalculator<double>::calc(void)'
+  d:\входящие\учение\аисд\stack-calculator\calculator\calculator\form1.h(409): note: see reference to function template instantiation 'double TCalculator<double>::calc(void)' being compiled
+  d:\входящие\учение\аисд\stack-calculator\calculator\calculator\form1.h(405): note: see reference to class template instantiation 'TCalculator<double>' being compiled
+d:\входящие\учение\аисд\stack-calculator\calculator\calculator\tcalculator.h(41): warning C4018: '<': signed/unsigned mismatch
+  d:\входящие\учение\аисд\stack-calculator\calculator\calculator\tcalculator.h(35): note: while compiling class template member function 'void TCalculator<double>::ToPostfix(void)'
+  d:\входящие\учение\аисд\stack-calculator\calculator\calculator\form1.h(407): note: see reference to function template instantiation 'void TCalculator<double>::ToPostfix(void)' being compiled
+  Form1.cpp
+  Generating Code...
+d:\входящие\учение\аисд\stack-calculator\calculator\calculator\tcalculator.h(34): warning C4715: 'TCalculator<double>::prior': not all control paths return a value
+  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
   AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  Calculator.vcxproj -> D:\Входящие\УЧЕНИЕ\АИСД\Лабы 3 семестр\Calculator\Calculator\Debug\Calculator.exe
+  Calculator.vcxproj -> D:\Входящие\УЧЕНИЕ\АИСД\Stack-calculator\Calculator\Debug\Calculator.exe

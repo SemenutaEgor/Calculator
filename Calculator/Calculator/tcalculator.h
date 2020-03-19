@@ -1,3 +1,4 @@
+//tcalculator.h
 #ifndef _TCALCULATOR_H_
 #define _TCALCULATOR_H_
 
@@ -10,12 +11,12 @@ using namespace std;
 
 
 template <class T>
-class TCalculator{
-	string expr; //строка, содержащая выражение
+class TCalculator {
+	string expr; //string contains expression
 	string postfix;
-	TStack <char> st_c;  //символьный стек
+	TStack <char> st_c;  //stack of symbols
 	TStack <double> st_d;
-public:	
+public:
 	void SetExpr(string s) {
 		expr = s;
 	}
@@ -32,42 +33,48 @@ public:
 		if (c == '^')
 			return 3;
 	}
-	void ToPostfix() {               //Метод перевода из инфиксной записи в постфиксную
-		string str = "("; //временная строка
+
+	//Method of transfer from infix to postfix
+	void ToPostfix() {
+		string str = "("; //temporary string
 		str += expr;
 		str += ")";
-		st_c.Clear(); //опустошаем стек
-		postfix = ""; //Присвоить постфиксу пустую строку, чтобы не было остатков от прошлых вычислений
-		for (int i = 0; i < str.size(); i++) { //от нуля до размера строки
-			if (str[i] == '(') //если (, то кладём её в стек
+		st_c.Clear(); //clean stack
+		postfix = ""; //assign the postfix an empty string so that there are no residuesfrom previous calculation 
+		for (int i = 0; i < str.size(); i++) {
+			if (str[i] == '(')
 				st_c.Push(str[i]);
-			if (((str[i] >= '0') && (str[i] <= '9') )|| (str[i] == '.')) //если от нуля до 9 или ., то записываем в постфикс
+			if (((str[i] >= '0') && (str[i] <= '9')) || (str[i] == '.'))
 				postfix += str[i];
-			if (str[i] == ')') { //если ), то
-				char tmp = st_c.Pop(); //присваиваем тмп то, что было на вершине стека
-				while (tmp != '(') { //пока тмп не равно (
-					postfix += tmp; //прибавляем к постфиксу тмп
-					tmp = st_c.Pop(); //в тмп записываем следующее значение из стека
+			if (str[i] == ')') {
+				char tmp = st_c.Pop();
+				while (tmp != '(') {
+					postfix += tmp;
+					tmp = st_c.Pop();
 				}
 			}
-			if ((str[i] == '+') || (str[i] == '-') || (str[i] == '*') || (str[i] == '/') || (str[i] == '^')) {// если это одна из арифм операций
-				postfix += " "; //вставляем в постфикс пробел
-				char tmp = st_c.Pop(); //создаём тмп и присваиваем ему то, что на вершине стека
-				while (prior(str[i]) <= prior(tmp)) {//пока приоритет данной операции меньiе или равен приоритету тмп
+			if ((str[i] == '+') || (str[i] == '-') || (str[i] == '*') || (str[i] == '/') || (str[i] == '^')) {
+				postfix += " ";
+				char tmp = st_c.Pop();
+				while (prior(str[i]) <= prior(tmp)) {
 					if (st_c.IsEmpty()) throw - 1;
 					else {
-						postfix += tmp; //записываем в постфикс тмп
+						postfix += tmp;
 						tmp = st_c.Pop();
-					}//тпм присваиваем то, что на вернише стека
+					}
 				}
-				st_c.Push(tmp); //кладём в стек тмп
-				st_c.Push(str[i]); //кладём в стек символ
+				st_c.Push(tmp);
+				st_c.Push(str[i]);
 			}
 		}
 	}
+
+	//Getting postfix
 	string GetPostfix() {
 		return postfix;
 	}
+
+	//Calculating method
 	double calc() {
 		st_d.Clear();
 		char* tmp;
@@ -98,7 +105,7 @@ public:
 			}
 		}
 		if (st_d.IsEmpty())
-			throw -1;
+			throw - 1;
 		else
 			res = st_d.Pop();
 		return res;
@@ -118,4 +125,4 @@ public:
 		return st_c.IsEmpty();
 	}
 };
-#endif // !_TCALCULATOR_H_
+#endif 
